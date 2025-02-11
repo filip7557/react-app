@@ -93,8 +93,8 @@ function Form({ setList, updateDogId, setUpdateDogId, setShowForm }) {
             <form onSubmit={handleSubmit}>
             <table>
                 <tbody>
-                    <tr><td>Dog's name:</td><td><input type="text" name="name" value={dog?.name} onInput={handleChange} placeholder="Dog's Name"/></td></tr>
-                    <tr><td>Dog's age:</td><td><input type="number" name="age" value={dog?.age} onInput={handleChange} placeholder="Dog's Age"/></td></tr>
+                    <tr className='formRow'><td>Dog's name:</td><td className='input'><input type="text" name="name" value={dog?.name} onInput={handleChange} placeholder="Dog's Name"/></td></tr>
+                    <tr className='formRow'><td>Dog's age:</td><td className='input'><input type="number" name="age" value={dog?.age} onInput={handleChange} placeholder="Dog's Age"/></td></tr>
                 </tbody>
             </table>
             {button}

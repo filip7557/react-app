@@ -8,7 +8,7 @@ function Table({list, setUpdateDogId, setDeleteDogId, setShowForm, setShowPopup}
             {list.length > 0 ?
             <table>
             <thead>
-                <tr>
+                <tr className='thead'>
                     <th>Name</th>
                     <th>Age</th>
                     <th>Actions</th>

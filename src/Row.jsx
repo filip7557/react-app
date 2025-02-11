@@ -18,7 +18,7 @@ function Row({ dog, setUpdateDogId, setDeleteDogId, setShowForm, setShowPopup })
         <tr>
             <td>{dog.name}</td>
             <td>{dog.age}</td>
-            <td><Button text="Update" className="update" onClick={onUpdateClick}/><Button text="Delete" className="delete" onClick={onDeleteClick}/></td>
+            <td className="actions"><Button text="Update" className="update" onClick={onUpdateClick}/><Button text="Delete" className="delete" onClick={onDeleteClick}/></td>
         </tr>
     )
 }
