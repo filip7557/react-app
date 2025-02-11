@@ -11,6 +11,7 @@ function Table({list, setUpdateDogId, setDeleteDogId, setShowForm, setShowPopup}
                 <tr className='thead'>
                     <th>Name</th>
                     <th>Age</th>
+                    <th>Breed</th>
                     <th>Actions</th>
                 </tr>
             </thead>

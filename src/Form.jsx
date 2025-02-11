@@ -1,22 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Form.css';
 
 import Button from "./Button";
 
 function Form({ setList, updateDogId, setUpdateDogId, setShowForm }) {
 
-    let updateDog = {name: "", age: ""};
-    if(updateDogId > 0) {
+    let updateDog = {name: "", age: "", breedId: "1"};
+
+    const [dog, setDog] = useState(updateDog);
+
+    useEffect(() => {
         const dogs = JSON.parse(localStorage.getItem("dogs")) || [];
             let index;
             dogs.forEach(p => {
                 if (p.id === updateDogId)
                     index = dogs.indexOf(p);
             })
-            updateDog = dogs[index];
-    }
-
-    const [dog, setDog] = useState(updateDog);
+            setDog(dogs[index]);
+    }, [updateDogId])
 
 
     function findMaxId(dogs)
@@ -40,7 +41,7 @@ function Form({ setList, updateDogId, setUpdateDogId, setShowForm }) {
             return;
         }
         if (updateDogId > 0) {
-            const dogs = JSON.parse(localStorage.getItem("dogs"));
+            const dogs = JSON.parse(localStorage.getItem("dogs")) || [];
             let index;
             dogs.forEach(p => {
                 if (p.id === updateDogId)
@@ -48,6 +49,7 @@ function Form({ setList, updateDogId, setUpdateDogId, setShowForm }) {
             })
             dogs[index].name = dog.name;
             dogs[index].age = dog.age;
+            dogs[index].breedId = dog.breedId;
             setList(dogs);
             localStorage.setItem("dogs", JSON.stringify(dogs));
             setDog({
@@ -57,11 +59,12 @@ function Form({ setList, updateDogId, setUpdateDogId, setShowForm }) {
             setUpdateDogId(0);
         }
         else {
-            const dogs = JSON.parse(localStorage.getItem("dogs"));
+            const dogs = JSON.parse(localStorage.getItem("dogs")) || [];
             const newDog = {
                 id: findMaxId(dogs) + 1,
                 name: dog.name,
-                age: dog.age
+                age: dog.age,
+                breedId: dog.breedId
             };
             dogs.push(newDog);
             setList(dogs);
@@ -79,15 +82,6 @@ function Form({ setList, updateDogId, setUpdateDogId, setShowForm }) {
         setUpdateDogId(0);
         setShowForm(false);
     }
-
-    let button;
-
-    if (updateDogId > 0) {
-        button = <Button  className="update" text="Update"/>;
-    }
-    else {
-        button = <Button text="Save"/>;
-    }
     return (
         <div id={updateDogId > 0 ? "updateForm" : "form" }>
             <form onSubmit={handleSubmit}>
@@ -95,9 +89,10 @@ function Form({ setList, updateDogId, setUpdateDogId, setShowForm }) {
                 <tbody>
                     <tr className='formRow'><td>Dog's name:</td><td className='input'><input type="text" name="name" value={dog?.name} onInput={handleChange} placeholder="Dog's Name"/></td></tr>
                     <tr className='formRow'><td>Dog's age:</td><td className='input'><input type="number" name="age" value={dog?.age} onInput={handleChange} placeholder="Dog's Age"/></td></tr>
+                    <tr className='formRow'><td>Breed:</td><td className='input'><select name="breedId" value={dog?.breedId} onChange={handleChange}><option value="0" selected="true" disabled="disabled">Choose option</option><option value="1">Bulldog</option><option value="2">German sheppard</option></select></td></tr>
                 </tbody>
             </table>
-            {button}
+            {updateDogId > 0 ? (<Button  className="update" text="Update"/>) : (<Button text="Save"/>)}
             <Button text="Cancel" onClick={onCancelClick} className="delete"/>
             </form>
         </div>

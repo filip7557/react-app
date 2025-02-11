@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Table from "./Table";
 import Form from './Form';
@@ -8,13 +8,16 @@ import DeletePopup from './DeletePopup';
 
 function App() {
 
-  const dogs = JSON.parse(localStorage.getItem("dogs"));
-
-  const [list, setList] = useState(dogs);
+  const [list, setList] = useState([]);
   const [updateDogId, setUpdateDogId] = useState(0);
   const [deleteDogId, setDeleteDogId] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [showPopUp, setShowPopup] = useState(false);
+
+  useEffect(() => {
+    const dogs = JSON.parse(localStorage.getItem("dogs")) || [];
+    setList(dogs);
+  }, [])
 
   function onAdd() {
     setShowForm(true);
