@@ -1,11 +1,13 @@
-.Popup {
+.DeletePopup {
     border: 2px rgb(155, 0, 0) solid;
     background-color: #282c34;
-    z-index: 1;
+    z-index: 100;
     border-radius: 6px;
     padding: 12px 20px;
     position: absolute;
     top: 0; bottom: 0;
     left: 0; right: 0;
     margin: auto;
+    width: 30rem;
+    height: 12rem;
 }

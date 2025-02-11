@@ -1,35 +1,24 @@
 import Button from "./Button";
 
-function Row({ dog }) {
+function Row({ dog, setUpdateDogId, setDeleteDogId, setShowForm, setShowPopup }) {
     
 
     function onUpdateClick() {
-        const name = dog.name;
-        const age = dog.age;
-        document.getElementById("form").setAttribute("class", "hidden");
-        document.getElementById("updateForm").removeAttribute("class");
-
-        document.getElementById("dogNameUpdate").Value = name;
-        document.getElementById("dogAgeUpdate").Value = age;
+        setUpdateDogId(dog.id);
+        setShowForm(true);
     }
 
 
-    function deleteDog() {
-        const dogs = JSON.parse(localStorage.getItem("dogs")) || [];
-            let index;
-            dogs.forEach(p => {
-                if (p.id === dog.id)
-                    index = dogs.indexOf(p);
-            })
-            dogs.splice(index, 1);
-            localStorage.setItem("dogs", JSON.stringify(dogs));
+    function onDeleteClick() {
+        setDeleteDogId(dog.id);
+        setShowPopup(true);
     }
 
     return (
         <tr>
             <td>{dog.name}</td>
             <td>{dog.age}</td>
-            <td><Button text="Update" className="update" onClick={onUpdateClick}/><Button text="Delete" className="delete" onClick={deleteDog}/></td>
+            <td><Button text="Update" className="update" onClick={onUpdateClick}/><Button text="Delete" className="delete" onClick={onDeleteClick}/></td>
         </tr>
     )
 }

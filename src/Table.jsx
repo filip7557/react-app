@@ -2,16 +2,10 @@ import './Table.css';
 
 import Row from './Row';
 
-function Table() {
-
-    const dogs = JSON.parse(localStorage.getItem("dogs")) || [];
-
-    let tbody;
-    if (dogs.length > 0) {
-        tbody = dogs.map(dog => <Row key={dog.id} dog={dog} />);
-    }
+function Table({list, setUpdateDogId, setDeleteDogId, setShowForm, setShowPopup}) {
     return (
         <div className="Table">
+            {list.length > 0 ?
             <table>
             <thead>
                 <tr>
@@ -21,9 +15,11 @@ function Table() {
                 </tr>
             </thead>
             <tbody>
-                {tbody}
+                {list.map(dog => <Row key={dog.id} dog={dog} setUpdateDogId={setUpdateDogId} setDeleteDogId={setDeleteDogId} setShowForm={setShowForm} setShowPopup={setShowPopup}/>)}
             </tbody>
-        </table> 
+        </table> :
+        <p>There are no dogs.</p>
+            }
         </div>
     );
 }
