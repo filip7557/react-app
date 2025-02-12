@@ -32,8 +32,10 @@ function App() {
         { showPopUp ? <DeletePopup setList={setList} setShowPopup={setShowPopup} deleteDogId={deleteDogId}/> :
         <div>
           <h1>Dogs</h1>
-          <SearchBar setList={setList}/>
-          <BreedFilterDropDown setList={setList}/>
+          <div className='filters'>
+            <SearchBar setList={setList}/>
+            <BreedFilterDropDown setList={setList}/>
+          </div>
           <Table list={list} setList={setList} setUpdateDogId={setUpdateDogId} setDeleteDogId={setDeleteDogId} setShowForm={setShowForm} setShowPopup={setShowPopup}/>
           {showForm ? <Form setList={setList} updateDogId={updateDogId} setUpdateDogId={setUpdateDogId} setShowForm={setShowForm}/> : <Button text="Add" onClick={onAdd}/>}
         </div>
