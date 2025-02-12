@@ -15,7 +15,7 @@ td {
 }
 
 .input {
-    text-align: center;
+    text-align: end;
 }
 
 input {
@@ -43,6 +43,7 @@ select {
     border: 2px solid #b67347;
     background-color: #f5d5a5;
     color: #3b404a;
+    width: 14.9rem;
 }
 
 select::placeholder {

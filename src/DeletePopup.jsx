@@ -1,23 +1,25 @@
+import dogService from './DogService';
+import { useState, useEffect } from 'react';
 import './DeletePopup.css'
 
 import Button from "./Button";
 
 function DeletePopup({ setShowPopup, deleteDogId, setList }) {
     
-    const dogs = JSON.parse(localStorage.getItem("dogs")) || [];
-    let index;
-    dogs.forEach(p => {
-        if (p.id === deleteDogId)
-            index = dogs.indexOf(p);
-    })
+    const [dog, setDog] = useState({})
 
-    const dog = dogs[index];
+    useEffect(() => {
+        dogService.getDogById(deleteDogId)
+            .then(setDog)
+    }, [deleteDogId])
 
     function onYesClick() {
-        dogs.splice(index, 1);
-        localStorage.setItem("dogs", JSON.stringify(dogs));
-        setList(dogs);
-        setShowPopup(false);
+        dogService.deleteDogById(deleteDogId)
+            .then(() => {
+                dogService.getDogs()
+                    .then(setList);
+                setShowPopup(false);
+            })
     }
     
     return (
