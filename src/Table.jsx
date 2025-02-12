@@ -16,11 +16,24 @@ function Table({list, setList, setUpdateDogId, setDeleteDogId, setShowForm, setS
             newPages.push(i)
         }
         setPages(newPages);
+        setCurrentPage(dogService.currentPage);
     }, [list])
 
     function handlePageClick(page) {
         setCurrentPage(page);
         dogService.currentPage = page;
+        dogService.getDogs()
+            .then(setList);
+    }
+
+    function handleTheadClick(name) {
+        if (dogService.currentSort !== name) {
+            dogService.isAsc = true;
+            dogService.currentSort = name;
+        }
+        else {
+            dogService.isAsc = !dogService.isAsc;
+        }
         dogService.getDogs()
             .then(setList);
     }
@@ -31,9 +44,9 @@ function Table({list, setList, setUpdateDogId, setDeleteDogId, setShowForm, setS
             <table>
             <thead>
                 <tr className='thead'>
-                    <th>Name</th>
-                    <th>Age</th>
-                    <th>Breed</th>
+                    <th name="Name" onClick={() => handleTheadClick("Name")}>Name {dogService.currentSort === "Name" ? dogService.isAsc ? "↑" : "↓" : ""}</th>
+                    <th name="Age" onClick={() => handleTheadClick("Age")}>Age {dogService.currentSort === "Age" ? dogService.isAsc ? "↑" : "↓" : ""}</th>
+                    <th name="Breed" onClick={() => handleTheadClick("Breed")}>Breed {dogService.currentSort === "Breed" ? dogService.isAsc ? "↑" : "↓" : ""}</th>
                     <th>Actions</th>
                 </tr>
             </thead>

@@ -6,6 +6,8 @@ import Table from "./Table";
 import Form from './Form';
 import Button from './Button';
 import DeletePopup from './DeletePopup';
+import BreedFilterDropDown from './BreedFilterDropDown';
+import SearchBar from './SearchBar';
 
 function App() {
 
@@ -30,6 +32,8 @@ function App() {
         { showPopUp ? <DeletePopup setList={setList} setShowPopup={setShowPopup} deleteDogId={deleteDogId}/> :
         <div>
           <h1>Dogs</h1>
+          <SearchBar setList={setList}/>
+          <BreedFilterDropDown setList={setList}/>
           <Table list={list} setList={setList} setUpdateDogId={setUpdateDogId} setDeleteDogId={setDeleteDogId} setShowForm={setShowForm} setShowPopup={setShowPopup}/>
           {showForm ? <Form setList={setList} updateDogId={updateDogId} setUpdateDogId={setUpdateDogId} setShowForm={setShowForm}/> : <Button text="Add" onClick={onAdd}/>}
         </div>

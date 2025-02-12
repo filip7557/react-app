@@ -3,9 +3,15 @@ import axios from 'axios';
 class DogService {
 
     currentPage = 1;
+    isAsc = true;
+    currentSort = "Name";
+    sortOrder = "ASC";
+    breedFilter = "";
+    nameFilter = "";
 
     async getDogs() {
-        const response = await axios.get("http://localhost:5259/api/Dog", { params: { currentPage: this.currentPage } });
+        this.sortOrder = this.isAsc ? "ASC" : "DESC";
+        const response = await axios.get("http://localhost:5259/api/Dog", { params: { currentPage: this.currentPage, sortOrder: this.sortOrder, orderBy: this.currentSort, breed: this.breedFilter, name: this.nameFilter } });
         return response.data;
     }
 
