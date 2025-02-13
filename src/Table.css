@@ -1,82 +1,82 @@
 .table {
-    margin-top: 2rem;
+  margin-top: 2rem;
 }
 
 table {
-    margin: 1rem;
-    background-color: #e0a96d;
-    color: #282c34;
-    border-radius: 6px;
-    box-shadow: 0px 4px 6px rgba(0,0,0,0.15);
-    transition: all 0.2s ease-in-out;
-    width: 55rem;
+  margin: 1rem;
+  background-color: #e0a96d;
+  color: #282c34;
+  border-radius: 6px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease-in-out;
+  width: 55rem;
 }
 
 tbody {
-    display: table-row-group;
+  display: table-row-group;
 }
 
 td {
-    padding: 0 2rem
+  padding: 0 2rem;
 }
 
 .actions {
-    text-align: center;
+  text-align: center;
 }
 
 thead {
-    padding: 2rem 0;
-    background-color: #fca311;
+  padding: 2rem 0;
+  background-color: #fca311;
 }
 
 label {
-    color: #282c34;
+  color: #282c34;
 }
 
 .currentPage {
-    color: white;
+  color: white;
 }
 
 .paging {
-    text-align: end;
-    padding-top: 1rem;
-    padding-bottom: 0.5rem;
-    padding-right: 0.5rem;
+  text-align: end;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 input {
-    padding: 12px 20px;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 2px solid #b67347;
-    background-color: #f5d5a5;
-    color: #3b404a;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid #b67347;
+  background-color: #f5d5a5;
+  color: #3b404a;
 }
 
 input::placeholder {
-    color: #795c42;
-  }
-  
+  color: #795c42;
+}
+
 input:focus {
-    border-color: #0077b6;
-    box-shadow: 0px 0px 6px rgba(0, 119, 182, 0.5);
-  }
+  border-color: #0077b6;
+  box-shadow: 0px 0px 6px rgba(0, 119, 182, 0.5);
+}
 
 select {
-    padding: 12px 20px;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 2px solid #b67347;
-    background-color: #f5d5a5;
-    color: #3b404a;
-    width: 14.9rem;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid #b67347;
+  background-color: #f5d5a5;
+  color: #3b404a;
+  width: 14.9rem;
 }
 
 select::placeholder {
-    color: #795c42;
-  }
-  
+  color: #795c42;
+}
+
 select:focus {
-    border-color: #0077b6;
-    box-shadow: 0px 0px 6px rgba(0, 119, 182, 0.5);
-  }
+  border-color: #0077b6;
+  box-shadow: 0px 0px 6px rgba(0, 119, 182, 0.5);
+}

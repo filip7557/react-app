@@ -16,7 +16,13 @@ function Table() {
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(dogService.currentPage);
 
-  const popup = showPopUp ?  <DeletePopup setList={setList} setShowPopup={setShowPopup} deleteDogId={deleteDogId} /> : undefined
+  const popup = showPopUp ? (
+    <DeletePopup
+      setList={setList}
+      setShowPopup={setShowPopup}
+      deleteDogId={deleteDogId}
+    />
+  ) : undefined;
 
   useEffect(() => {
     let numberOfPages = Math.ceil(list.totalRecords / list.pageSize);
@@ -51,83 +57,78 @@ function Table() {
   return (
     <div>
       {popup}
-        <div>
-          <NavBar />
-          <div className="App App-header">
-            {list?.data?.length > 0 ? (
-              <div className="table">
-                <div className="filters">
-                  <SearchBar setList={setList} />
-                  <BreedFilterDropDown setList={setList} />
-                </div>
-                <table>
-                  <thead>
-                    <tr className="thead">
-                      <th name="Name" onClick={() => handleTheadClick("Name")}>
-                        Name{" "}
-                        {dogService.currentSort === "Name"
-                          ? dogService.isAsc
-                            ? "↑"
-                            : "↓"
-                          : ""}
-                      </th>
-                      <th name="Age" onClick={() => handleTheadClick("Age")}>
-                        Age{" "}
-                        {dogService.currentSort === "Age"
-                          ? dogService.isAsc
-                            ? "↑"
-                            : "↓"
-                          : ""}
-                      </th>
-                      <th
-                        name="Breed"
-                        onClick={() => handleTheadClick("Breed")}
-                      >
-                        Breed{" "}
-                        {dogService.currentSort === "Breed"
-                          ? dogService.isAsc
-                            ? "↑"
-                            : "↓"
-                          : ""}
-                      </th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {list.data.map((dog) => (
-                      <Row
-                        key={dog.id}
-                        dog={dog}
-                        setDeleteDogId={setDeleteDogId}
-                        setShowPopup={setShowPopup}
-                      />
-                    ))}
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td className="paging">
-                        {pages.map((page) => (
-                          <label
-                            key={page}
-                            className={
-                              page === currentPage ? "currentPage" : ""
-                            }
-                            onClick={() => handlePageClick(page)}
-                          >
-                            {page}{" "}
-                          </label>
-                        ))}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+      <div>
+        <NavBar />
+        <div className="App App-header">
+          {list?.data?.length > 0 ? (
+            <div className="table">
+              <div className="filters">
+                <SearchBar setList={setList} />
+                <BreedFilterDropDown setList={setList} />
               </div>
-            ) : (
-              <p>There are no dogs.</p>
-            )}
-          </div>
+              <table>
+                <thead>
+                  <tr className="thead">
+                    <th name="Name" onClick={() => handleTheadClick("Name")}>
+                      Name{" "}
+                      {dogService.currentSort === "Name"
+                        ? dogService.isAsc
+                          ? "↑"
+                          : "↓"
+                        : ""}
+                    </th>
+                    <th name="Age" onClick={() => handleTheadClick("Age")}>
+                      Age{" "}
+                      {dogService.currentSort === "Age"
+                        ? dogService.isAsc
+                          ? "↑"
+                          : "↓"
+                        : ""}
+                    </th>
+                    <th name="Breed" onClick={() => handleTheadClick("Breed")}>
+                      Breed{" "}
+                      {dogService.currentSort === "Breed"
+                        ? dogService.isAsc
+                          ? "↑"
+                          : "↓"
+                        : ""}
+                    </th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {list.data.map((dog) => (
+                    <Row
+                      key={dog.id}
+                      dog={dog}
+                      setDeleteDogId={setDeleteDogId}
+                      setShowPopup={setShowPopup}
+                    />
+                  ))}
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td className="paging">
+                      {pages.map((page) => (
+                        <label
+                          key={page}
+                          className={page === currentPage ? "currentPage" : ""}
+                          onClick={() => handlePageClick(page)}
+                        >
+                          {page}{" "}
+                        </label>
+                      ))}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <p>There are no dogs.</p>
+          )}
         </div>
+      </div>
     </div>
   );
 }

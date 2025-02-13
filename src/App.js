@@ -1,10 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
 
-import Home from './Home';
+import Home from "./Home";
 import Table from "./Table";
-import Form from './Form';
-import About from './About';
+import Form from "./Form";
+import About from "./About";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
       <Route path="Dogs" element={<Table />} />
       <Route path="Add" element={<Form />} />
       <Route path="Dogs/:id" element={<Form />} />
-      <Route path="AboutUs" element={<About />} /> 
+      <Route path="AboutUs" element={<About />} />
     </Routes>
   );
 }
