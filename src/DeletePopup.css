@@ -7,7 +7,7 @@
 }
 
 .DeletePopup {
-  border: 2px rgb(155, 0, 0) solid;
+  border: 2px #e0a96d solid;
   background-color: #282c34;
   z-index: 101;
   border-radius: 6px;
