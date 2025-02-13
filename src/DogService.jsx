@@ -10,45 +10,71 @@ class DogService {
 
   async getDogs() {
     this.sortOrder = this.isAsc ? "ASC" : "DESC";
-    const response = await axios.get("http://localhost:5259/api/Dog", {
-      params: {
-        currentPage: this.currentPage,
-        sortOrder: this.sortOrder,
-        orderBy: this.currentSort,
-        breed: this.breedFilter,
-        name: this.nameFilter,
-      },
-    });
-    return response.data;
+    try {
+      const response = await axios.get("http://localhost:5259/api/Dog", {
+        params: {
+          currentPage: this.currentPage,
+          sortOrder: this.sortOrder,
+          orderBy: this.currentSort,
+          breed: this.breedFilter,
+          name: this.nameFilter,
+        },
+      });
+      return response.data;
+    } catch (error) {
+      alert(error.message);
+      return {};
+    }
   }
 
   async getDogById(id) {
-    const response = await axios.get(`http://localhost:5259/api/Dog/${id}`);
-    return response.data;
+    try {
+      const response = await axios.get(`http://localhost:5259/api/Dog/${id}`);
+      return response.data;
+    } catch (error) {
+      alert(error.message);
+      return {};
+    }
   }
 
   async getBreeds() {
-    const response = await axios.get("http://localhost:5259/api/Breed");
-    return response.data;
+    try {
+      const response = await axios.get("http://localhost:5259/api/Breed");
+      return response.data;
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   async deleteDogById(id) {
-    await axios.delete(`http://localhost:5259/api/Dog/${id}`);
+    try {
+      await axios.delete(`http://localhost:5259/api/Dog/${id}`);
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   async SaveDog(dog) {
-    const response = await axios.post("http://localhost:5259/api/Dog", dog);
-    console.log(response.status);
-    return response;
+    try {
+      const response = await axios.post("http://localhost:5259/api/Dog", dog);
+      console.log(response.status);
+      return response;
+    } catch (error) {
+      alert(error.message);
+    }
   }
 
   async UpdateDog(id, dog) {
-    const response = await axios.put(
-      `http://localhost:5259/api/Dog/${id}`,
-      dog
-    );
-    console.log(response.status);
-    return response;
+    try {
+      const response = await axios.put(
+        `http://localhost:5259/api/Dog/${id}`,
+        dog
+      );
+      console.log(response.status);
+      return response;
+    } catch (error) {
+      alert(error.message);
+    }
   }
 }
 
