@@ -6,6 +6,16 @@ form {
     transition: all 0.2s ease-in-out;
 }
 
+.formTable {
+    width: 31.75rem;
+    text-align: center;
+}
+
+.formTable tbody {
+    padding: 1rem 0;
+    display: table;
+}
+
 td {
     text-align: left;
 }

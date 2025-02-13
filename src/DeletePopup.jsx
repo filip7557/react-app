@@ -1,5 +1,6 @@
 import dogService from './DogService';
 import { useState, useEffect } from 'react';
+import './App.css'
 import './DeletePopup.css'
 
 import Button from "./Button";
@@ -23,9 +24,11 @@ function DeletePopup({ setShowPopup, deleteDogId, setList }) {
     }
     
     return (
-        <div className="DeletePopup">
-            <h3>{"Are you sure you want to delete " + dog.name + "?"}</h3>
-            <Button text="Yes" onClick={onYesClick}/><Button text="No" className="delete" onClick={() => setShowPopup(false)}/>
+        <div className='popupScreen'>
+            <div className="DeletePopup">
+                <h2>{"Are you sure you want to delete " + dog.name + "?"}</h2>
+                <Button text="Yes" onClick={onYesClick}/><Button text="No" className="delete" onClick={() => setShowPopup(false)}/>
+            </div>
         </div>
     );
 }

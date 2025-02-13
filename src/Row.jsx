@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
+
 import Button from "./Button";
 
-function Row({ dog, setUpdateDogId, setDeleteDogId, setShowForm, setShowPopup }) {
+function Row({ dog, setDeleteDogId, setShowPopup }) {
     
+    const navigate = useNavigate();
 
     function onUpdateClick() {
-        setUpdateDogId(dog.id);
-        setShowForm(true);
+        navigate(`/dogs/${dog.id}`)
     }
 
 
