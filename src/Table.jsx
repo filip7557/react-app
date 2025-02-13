@@ -35,6 +35,12 @@ function Table() {
   }, [list]);
 
   useEffect(() => {
+    dogService.breedFilter = "";
+    dogService.nameFilter = "";
+    dogService.currentPage = 1;
+    dogService.isAsc = true;
+    dogService.currentSort = "Name";
+    dogService.sortOrder = "ASC";
     dogService.getDogs().then(setList);
   }, []);
 
